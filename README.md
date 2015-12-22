@@ -51,7 +51,7 @@ What it sets up
 * [Ruby] stable for writing general-purpose code
 * [Zsh] as your shell
 * [XQuartz] for running headless browser  
- 
+
 [Bundler]: http://bundler.io/
 [Homebrew]: http://brew.sh/
 [ImageMagick]: http://www.imagemagick.org/
@@ -60,7 +60,7 @@ What it sets up
 [Rbenv]: https://github.com/sstephenson/rbenv
 [Ruby]: https://www.ruby-lang.org/en/
 [Zsh]: http://www.zsh.org/
-[XQuartz]: http://xquartz.macosforge.org 
+[XQuartz]: http://xquartz.macosforge.org
 
 It should take less than 15 minutes to install (depends on your machine).
 
@@ -85,6 +85,8 @@ gem_install_or_update 'parity'
 
 brew_install_or_upgrade 'tree'
 brew_install_or_upgrade 'watch'
+
+npm_install_or_update 'appium'
 ```
 
 Write your customizations such that they can be run safely more than once.
