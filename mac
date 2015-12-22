@@ -116,8 +116,10 @@ brew_cask_expand_alias() {
 }
 
 brew_cask_is_installed() {
-  local NAME=$(brew_cask_expand_alias "$1")
-  brew cask list -1 | grep -Fqx "$NAME"
+  local name
+  name=$(brew_cask_expand_alias "$1")
+
+  brew cask list -1 | grep -Fqx "$name"
 }
 
 brew_cask_install() {
@@ -144,6 +146,17 @@ gem_install_or_update() {
     fancy_echo "Installing %s ..." "$1"
     gem install "$@"
     rbenv rehash
+  fi
+}
+
+npm_install_or_update() {
+  npm list -g "$1" > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    fancy_echo "Installing %s ..." "$1"
+    npm install -g "$@"
+  else
+    fancy_echo "Updating %s ..." "$1"
+    npm update -g  "$@"
   fi
 }
 
@@ -214,4 +227,7 @@ if [ -f "$HOME/.laptop.local" ]; then
 fi
 
 gem_install_or_update 'pre-commit'
+
+npm_install_or_update "appium"
+
 fancy_echo 'Done. Now your laptop is awesome!'
